@@ -83,6 +83,13 @@
             <scope>runtime</scope>
         </dependency>
 
+<!--        &lt;!&ndash;flyway依赖包&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.flywaydb</groupId>-->
+<!--            <artifactId>flyway-core</artifactId>-->
+<!--            <version>5.2.4</version>-->
+<!--        </dependency>-->
+
     </dependencies>
 
     <build>
@@ -91,6 +98,20 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+
+<!--            &lt;!&ndash;flyway的插件&ndash;&gt;-->
+<!--            <plugin>-->
+<!--                <groupId>org.flywaydb</groupId>-->
+<!--                <artifactId>flyway-maven-plugin</artifactId>-->
+<!--                <version>5.2.4</version>-->
+<!--                <configuration>-->
+<!--                    <url>jdbc:mysql://localhost:3306/flyway?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT</url>-->
+<!--                    <user>root</user>-->
+<!--                    <password>root</password>-->
+<!--                    <driver>com.mysql.cj.jdbc.Driver</driver>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 
