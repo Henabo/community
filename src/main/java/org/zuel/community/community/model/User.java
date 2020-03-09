@@ -9,6 +9,7 @@ public class User {
     private Long gmtCreate;
     private Long gmtModified;
 
+
     public Integer getId() {
         return id;
     }
