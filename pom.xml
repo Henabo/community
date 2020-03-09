@@ -83,6 +83,14 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!--lombok,直接@Data-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <scope>provided</scope>
+        </dependency>
+
 <!--        &lt;!&ndash;flyway依赖包&ndash;&gt;-->
 <!--        <dependency>-->
 <!--            <groupId>org.flywaydb</groupId>-->
