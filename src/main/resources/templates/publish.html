@@ -14,43 +14,62 @@
 <!--导航栏-->
 <div th:replace="navigation :: nav"></div>
 
-<div class="container-fluid main">
+<div class="container main">
     <div class="row">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 left-index" >
+            <img src="/images/bilibili.png"
+                 class="boxShadow" style="object-fit: cover;max-height: 100%;max-width: 100%">
+            <div class="boxShadow bkgColor-white" style="margin-top: 5px;border-radius: 5px">
+                <h2 style="margin-left: 20px;">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    发起
+                </h2>
+            </div>
+            <div class="boxShadow bkgColor-white" style="margin-top: 5px;border-radius: 5px">
+                <div style="margin: 20px;">
+                    <form action="/publish" method="post">
+                        <div class="form-group">
+                            <label for="title" style="font-size:x-large">问题标题（简单扼要）</label>
+                            <input type="text" class="form-control" th:value="${title}" id="title" name="title" placeholder="写下你的问题，准确地描述问题更容易得到解答">
+                        </div>
 
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <h2>
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                发起
-            </h2>
-            <form action="/publish" method="post">
-                <div class="form-group">
-                    <label for="title">问题标题（简单扼要）</label>
-                    <input type="text" class="form-control" th:value="${title}" id="title" name="title" placeholder="问题标题...">
+                        <div class="form-group">
+                            <label for="content" style="font-size:x-large">问题补充（必填，请参照右侧提示）</label>
+                            <textarea name="content" id="content" th:text="${content}" class="form-control" cols="30" rows="10" placeholder="输入问题背景、条件等信息（必填）"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tag" style="font-size:x-large">添加标签：</label>
+                            <input type="text" class="form-control" th:value="${tag}" id="tag" name="tag" placeholder="输入标签，以（，）逗号分隔">
+                        </div>
+
+                        <div class="alert alert-danger alert-dismissible" role="alert" th:if="${error != null}" style="margin-top: 7px">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <p th:text="${error}"></p>
+                        </div>
+                        <div style="text-align: right">
+                            <button type="submit" class="btn btn-zhihu" style="width: 100px;align;">发布</button>
+                        </div>
+                    </form>
                 </div>
-
-                <div class="form-group">
-                    <label for="description">问题补充（必填，请参照右侧提示）</label>
-                    <textarea name="description" id="description" th:text="${description}" class="form-control" cols="30" rows="10"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="tag">添加标签：</label>
-                    <input type="text" class="form-control" th:value="${tag}" id="tag" name="tag" placeholder="输入标签，以（，）逗号分隔">
-                </div>
-
-                <div class="alert alert-danger" th:if="${error != null}" th:text="${error}"></div>
-                <button type="submit" class="btn btn-success btn-publish">发布</button>
-            </form>
+            </div>
         </div>
 
 
-        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-
-            <h3>问题发起指南</h3>
-            是垃圾分类撒娇了飞洒发了是否就爱上了对方就拉说jf啊手动阀就上了飞机拉萨机法律纠纷拉萨机l
-            树栋少了几分丽莎的放假啊的肌肤拉萨解放了时间拉说j
-            十六点九分拉萨机了就爱上了拉刚好看到后返回噢回复
-            三等分拉萨机法拉九十六飞机阿拉斯加发拉萨机分类
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 right-index " >
+            <div class="boxShadow bkgColor-white" style="border-radius: 5px;height: 200px;">
+                <div style="margin: 10px;">
+                    <h1>这是右边</h1>
+                </div>
+            </div>
+            <br>
+            <div class="boxShadow bkgColor-white">
+                <h3>问题发起指南</h3>
+                是垃圾分类撒娇了飞洒发了是否就爱上了对方就拉说jf啊手动阀就上了飞机拉萨机法律纠纷拉萨机l
+                树栋少了几分丽莎的放假啊的肌肤拉萨解放了时间拉说j
+                十六点九分拉萨机了就爱上了拉刚好看到后返回噢回复
+                三等分拉萨机法拉九十六飞机阿拉斯加发拉萨机分类
+            </div>
         </div>
 
     </div>
