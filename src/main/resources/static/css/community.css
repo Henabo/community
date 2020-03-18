@@ -115,3 +115,9 @@ a:active{
     margin: 0 auto;
     text-align: center;
 }
+
+.CardMax{
+    background-color: white;
+    padding:5px;
+    border-bottom: 1px solid #f6f6f6;
+}

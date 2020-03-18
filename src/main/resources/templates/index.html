@@ -39,108 +39,91 @@
 <!--            <div class="bkgColor-white boxShadow" style="margin-top: 5px">-->
 <!--&lt;!&ndash;                //这里要循环查找，10个问题&ndash;&gt;-->
 <!--            </div>-->
-            <div>
+            <div th:each="questionVO:${pageInfo.getList()  }">
                 <!--                    //一个问题的样式-->
                 <div class="row">
                     <div class="col-lg-3  visible-lg-block">
-                        <div class="thumbnail" style="text-align: center">
-                            <img src="/images/daitu.png" alt="..." >
+                        <div class="thumbnail boxShadow" style="">
+                            <img th:src="${questionVO.user.avatorUrl}" class="img-thumbnail" style="text-align: center;height: 100px;width: 100px;" alt="..." >
                             <div class="caption" style="text-align: center">
-                                <h3>姓名</h3>
-                                <p>不知道是啥</p>
+                                <strong th:text="${questionVO.user.userName}">姓名</strong>
                             </div>
+                            <p style="margin-left: 20px;margin-right: 20px">个性签名：你永远不懂我伤悲你永远不懂我伤悲你永远不懂我伤悲</p>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                         <div class="panel panel-info">
                             <div class="panel-heading" style="padding: 3px 10px">
-                                <h4><a href="#" class="index-questionTitle">leetcode---多数元素(摩尔投票法)</a></h4>
+                                <h4><a href="#" class="index-questionTitle" th:text="${questionVO.title}">leetcode---多数元素(摩尔投票法)</a></h4>
                             </div>
                             <div class="panel-body">
                                 <p class="index-questionInfo ">
                                     <span class="glyphicon  glyphicon-user" aria-hidden="true"></span>
-                                    作者：<span>awakeyoyoyo</span> |
+                                    提问者：<span th:text="${questionVO.user.userName}">awakeyoyoyo</span> |
                                     <span class="glyphicon glyphicon glyphicon-calendar" aria-hidden="true"></span>
 
-                                    发布时间：<span>2020-03-13 15:55:55</span> |
+                                    发布时间：<span th:text="${#dates.format(questionVO.addTime,'yyyy-MM-dd HH:mm:ss')}">2020-03-13 15:55:55</span> |
                                     <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
-                                    阅读数：<span>19</span>
+                                    阅读数：<span th:text="${questionVO.viewCount}">19</span>
                                     <br>
                                 </p>
-                                <!--                    -->
-                                <p class="index-questionText">最近保持每天在leetcode上刷2道题，今天遇到了一道简单的题目，有很多方法，第一想到的是桶排，但没有给范围，排除了，其次就是整个数组排序一波，取中间就是了，随后也这样做了，不过做完去看题解就被这个摩尔投票惊艳到了，先mark下来。</p>
-                                <p></p><h5><a href="#" class="">阅读全文<span class="glyphicon glyphicon-menu-right"></span></a></h5><p></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3  visible-lg-block">
-                        <div class="thumbnail" style="text-align: center">
-                            <img src="/images/daitu.png" alt="..." >
-                            <div class="caption" style="text-align: center">
-                                <h3>姓名</h3>
-                                <p>不知道是啥</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-                        <div class="panel panel-info">
-                            <div class="panel-heading" style="padding: 3px 10px">
-                                <h4><a href="#" class="index-questionTitle">leetcode---多数元素(摩尔投票法)</a></h4>
-                            </div>
-                            <div class="panel-body">
-                                <p class="index-questionInfo ">
-                                    <span class="glyphicon  glyphicon-user" aria-hidden="true"></span>
-                                    作者：<span>awakeyoyoyo</span> |
-                                    <span class="glyphicon glyphicon glyphicon-calendar" aria-hidden="true"></span>
-
-                                    发布时间：<span>2020-03-13 15:55:55</span> |
-                                    <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
-                                    阅读数：<span>19</span>
-                                    <br>
-                                </p>
-                                <!--                    -->
-                                <p class="index-questionText">最近保持每天在leetcode上刷2道题，今天遇到了一道简单的题目，有很多方法，第一想到的是桶排，但没有给范围，排除了，其次就是整个数组排序一波，取中间就是了，随后也这样做了，不过做完去看题解就被这个摩尔投票惊艳到了，先mark下来。</p>
-                                <p></p><h5><a href="#" class="">阅读全文<span class="glyphicon glyphicon-menu-right"></span></a></h5><p></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3  visible-lg-block">
-                        <div class="thumbnail" style="text-align: center">
-                            <img src="/images/daitu.png" alt="..." >
-                            <div class="caption" style="text-align: center">
-                                <h3>姓名</h3>
-                                <p>不知道是啥</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-                        <div class="panel panel-info">
-                            <div class="panel-heading" style="padding: 3px 10px">
-                                <h4><a href="#" class="index-questionTitle">leetcode---多数元素(摩尔投票法)</a></h4>
-                            </div>
-                            <div class="panel-body">
-                                <p class="index-questionInfo ">
-                                    <span class="glyphicon  glyphicon-user" aria-hidden="true"></span>
-                                    作者：<span>awakeyoyoyo</span> |
-                                    <span class="glyphicon glyphicon glyphicon-calendar" aria-hidden="true"></span>
-
-                                    发布时间：<span>2020-03-13 15:55:55</span> |
-                                    <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
-                                    阅读数：<span>19</span>
-                                    <br>
-                                </p>
-                                <!--                    -->
-                                <p class="index-questionText">最近保持每天在leetcode上刷2道题，今天遇到了一道简单的题目，有很多方法，第一想到的是桶排，但没有给范围，排除了，其次就是整个数组排序一波，取中间就是了，随后也这样做了，不过做完去看题解就被这个摩尔投票惊艳到了，先mark下来。</p>
+                                <p class="index-questionText" th:text="${questionVO.content}">最近保持每天在leetcode上刷2道题，今天遇到了一道简单的题目，有很多方法，第一想到的是桶排，但没有给范围，排除了，其次就是整个数组排序一波，取中间就是了，随后也这样做了，不过做完去看题解就被这个摩尔投票惊艳到了，先mark下来。</p>
                                 <p></p><h5><a href="#" class="">阅读全文<span class="glyphicon glyphicon-menu-right"></span></a></h5><p></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li>
+                        <a th:href="@{/(pageNum=1)}" aria-label="Previous">
+                            <span aria-hidden="true">首页</span>
+                        </a>
+                    </li>
+                    <li th:if="${pageInfo.hasPreviousPage}">
+                        <a th:href="@{/(pageNum=${pageInfo.pageNum - 1})}">
+                            <span>上一页</span>
+                        </a>
+                    </li>
+                    <li th:if="${(pageInfo.pageNum - 2) > 0 and (pageInfo.pageNum - 1) != (pageInfo.pageNum - 2)}">
+                        <a th:href="@{/(pageNum=${pageInfo.pageNum - 2})}">
+                            <span th:text="${pageInfo.pageNum - 2}"></span>
+                        </a>
+                    </li>
+                    <li th:if="${pageInfo.hasPreviousPage}">
+                        <a th:href="@{/(pageNum=${pageInfo.pageNum - 1})}">
+                            <span th:text="${pageInfo.pageNum - 1}"></span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/(pageNum=${pageInfo.pageNum})}">
+                            <span th:text="${pageInfo.pageNum}"></span>
+                        </a>
+                    </li>
+                    <li th:if="${pageInfo.hasNextPage}">
+                        <a th:href="@{/(pageNum=${pageInfo.pageNum + 1})}">
+                            <span th:text="${pageInfo.pageNum + 1}"></span>
+                        </a>
+                    </li>
+                    <li th:if="${(pageInfo.pageNum + 2) <= pageInfo.pages and (pageInfo.pageNum + 1) != (pageInfo.pageNum + 2)}">
+                        <a th:href="@{/(pageNum=${pageInfo.pageNum + 2})}">
+                            <span th:text="${pageInfo.pageNum + 2}"></span>
+                        </a>
+                    </li>
+                    <li th:if="${pageInfo.hasNextPage}">
+                        <a th:href="@{/(pageNum=${pageInfo.pageNum + 1})}">
+                            <span>下一页</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/(pageNum=${pageInfo.pages})}" aria-label="Next">
+                            <span aria-hidden="true">尾页</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
         </div>
 
 

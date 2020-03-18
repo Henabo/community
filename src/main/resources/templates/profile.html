@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="${sectionName}"></title>
+    <title th:text="${'我的主页 - ' + sectionName +' - 信管问答社区 -hnb'}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script src="/js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
@@ -16,62 +16,101 @@
 <div th:replace="navigation :: nav"></div>
 
 
-<div class="container-fluid main">
+<div class="container main">
+
+    <div style="height: 200px;width: 100%;padding-top: 60px;
+         background-image: url(https://i0.hdslb.com/bfs/space/cb1c3ef50e22b6096fde67febe863494caefebad.png);">
+        <div style="float: left;">
+            <img th:src="${session.user.avatorUrl}" alt="" class="img-rounded" style="height: 120px;width: 120px;margin-left: 50px;">
+        </div>
+        <div style="float: left;margin-top: 30px">
+            <strong style="font-size: xx-large;color: #fff;margin-left: 15px" th:text="${session.user.userName}"></strong>
+            <br>
+            <div th:if="${session.user.blacklisted == false}">
+                <strong style="color: #A30014;margin-left: 150px;">您已被管理员拉黑，请和管理员联系，让老大给你拉白</strong>
+                <span style="color: #f7f7f7;">（由于您被拉黑，您的问题、回答其他人不可见）</span>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
-
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <h2>
-                <span th:text="${sectionName}"></span>
-            </h2>
-            <hr>
-            <div class="media" th:each="question : ${pagination.questions}">
-                <div class="media-left">
-                    <a href="#">
-                        <img class="media-object img-rounded"
-                             th:src="${question.user.avatarUrl}"
-                             src="https://avatars2.githubusercontent.com/u/50015277?v=4">
-                    </a>
-                </div>
-                <div class="media-body">
-                    <h4 class="media-heading" th:text="${question.title}"></h4>
-                    <span th:text="${question.description}"></span><br>
-                    <span class="text-desc">
-                        <span th:text="${question.commentCount}"></span> 个回复 •
-                        <span th:text="${question.viewCount}"></span> 次浏览 •
-                        <span th:text="${#dates.format(question.gmtCreate,'yyyy-MM-dd HH:mm')}"></span>
-                    </span>
-
+            <div class="bkgColor-white" style="margin-top: 5px">
+                <nav class="TopTabs">
+                    <a href="/profile/question" class="TopTabs-link" th:style="'color:' + @{(${section == 'question'}? '#0084ff;':'')}">提问</a>
+                    <a href="/profile/answer" class="TopTabs-link" th:style="'color:' + @{(${section == 'answer'}? '#0084ff;' : '')}">回答</a>
+                    <a href="/" class="TopTabs-link" th:style="'color:' + @{(${section == 'shieldQuestion'}? '#0084ff;':'')}" >被屏蔽的问题</a>
+                    <a href="/" class="TopTabs-link" th:style="'color:' + @{(${section == 'shieldedAnswer'}? '#0084ff;':'')}">被屏蔽的回答</a>
+                </nav>
+            </div>
+<!--            问题列表-->
+            <div th:each="questionVO : ${pageInfo.getList()}">
+                <div class="CardMax">
+                    <div style="margin-left: 50px">
+                        <a href="#" class="index-questionTitle"  style="font-size: 28px;font-weight: bold;"
+                           th:text="${questionVO.title}"></a>
+                        <p style="color: #7F7F7F;" th:text="${#dates.format(questionVO.addTime,'yyyy-MM-dd HH:mm:ss')}"></p>
+                    </div>
+                    <div style="text-align: right;margin-right: 50px;margin-bottom: 10px;margin-top: -50px">
+                        <h3 th:if="${questionVO.ended == true }" style="color: #7F7F7F">
+                            已终结
+                        </h3>
+                        <button th:if="${questionVO.ended == false }" type="button" style="width: 70px;" class="btn btn-danger">终结</button>
+                    </div>
                 </div>
             </div>
-
             <nav aria-label="Page navigation">
                 <ul class="pagination">
                     <li>
-                        <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
+                        <a th:href="@{'/profile/'+ ${section}(pageNum=1)}" aria-label="Previous">
+                            <span aria-hidden="true">首页</span>
                         </a>
                     </li>
-
-                    <li th:each="page : ${pagination.pages}" th:class="${pagination.page == page}? 'active' : ''">
-                        <a th:href="@{/(page=${page})}" th:text="${page}">1</a>
+                    <li th:if="${pageInfo.hasPreviousPage}">
+                        <a th:href="@{'/profile/' + ${section}(pageNum=${pageInfo.pageNum - 1})}">
+                            <span>上一页</span>
+                        </a>
                     </li>
-
+                    <li th:if="${(pageInfo.pageNum - 2) > 0 and (pageInfo.pageNum - 1) != (pageInfo.pageNum - 2)}">
+                        <a th:href="@{'/profile/' + ${section}(pageNum=${pageInfo.pageNum - 2})}">
+                            <span th:text="${pageInfo.pageNum - 2}"></span>
+                        </a>
+                    </li>
+                    <li th:if="${pageInfo.hasPreviousPage}">
+                        <a th:href="@{'/profile/' + ${section}(pageNum=${pageInfo.pageNum - 1})}">
+                            <span th:text="${pageInfo.pageNum - 1}"></span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{'/profile/' + ${section}(pageNum=${pageInfo.pageNum})}">
+                            <span th:text="${pageInfo.pageNum}"></span>
+                        </a>
+                    </li>
+                    <li th:if="${pageInfo.hasNextPage}">
+                        <a th:href="@{'/profile/' + ${section}(pageNum=${pageInfo.pageNum + 1})}">
+                            <span th:text="${pageInfo.pageNum + 1}"></span>
+                        </a>
+                    </li>
+                    <li th:if="${(pageInfo.pageNum + 2) <= pageInfo.pages and (pageInfo.pageNum + 1) != (pageInfo.pageNum + 2)}">
+                        <a th:href="@{'/profile/' + ${section}(pageNum=${pageInfo.pageNum + 2})}">
+                            <span th:text="${pageInfo.pageNum + 2}"></span>
+                        </a>
+                    </li>
+                    <li th:if="${pageInfo.hasNextPage}">
+                        <a th:href="@{'/profile/' + ${section}(pageNum=${pageInfo.pageNum + 1})}">
+                            <span>下一页</span>
+                        </a>
+                    </li>
                     <li>
-                        <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
+                        <a th:href="@{'/profile/' + ${section}(pageNum=${pageInfo.pages})}" aria-label="Next">
+                            <span aria-hidden="true">尾页</span>
                         </a>
                     </li>
                 </ul>
             </nav>
         </div>
-
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-            <div class="list-group profile-section">
-                <a href="/profile/questions" class="list-group-item" th:classappend="${section == 'questions'}? 'active' : ''">我的问题</a>
-                <a href="/profile/replies" class="list-group-item" th:classappend="${section == 'replies'}? 'active' : ''">
-                    最新回复<span class="badge">14</span>
-                </a>
-            </div>
+            <h1>buhao</h1>
         </div>
 
     </div>

@@ -50,20 +50,8 @@ public class PublishController {
             return "publish";
         }
 
-        Cookie[] cookies = request.getCookies();
-        User user = null;
-        for(Cookie cookie : cookies){
-            if("herb_userName".equals(cookie.getName())){
-                String herb_userName = cookie.getValue();
-                user = userService.selectByUserName(herb_userName);
-                if( user == null){
-                    request.getSession().setAttribute("user",null);
-                } else {
-                    request.getSession().setAttribute("user",user);
-                }
-                break;
-            }
-        }
+        User user = (User) request.getSession().getAttribute("user");
+
         if (user == null){
             model.addAttribute("error","用户未登录");
             return "publish";

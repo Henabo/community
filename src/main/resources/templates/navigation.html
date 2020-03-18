@@ -30,19 +30,20 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li th:if="${session.user != null}">
-                        <button onclick="window.location.href='publish'" type="button" class="btn btn-zhihu" style="width: 100px;margin:7px 100px;">
+                        <button onclick="window.location.href='/publish'" type="button" class="btn btn-zhihu" style="width: 100px;margin:7px 100px;">
                             我想提问
                         </button>
                     </li>
                     <li th:if="${session.user != null}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                            role="button" aria-haspopup="true" aria-expanded="false">
+                            <img th:src="${session.user.avatorUrl}" style="width: 30px;height: 30px" alt="..."  class="img-rounded">
                             <span th:text="${session.user.userName}"></span>
                             <span class="caret">
                         </span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">我的主页</a></li>
+                            <li><a href="/profile/question">我的主页</a></li>
                             <li><a href="#">退出登录</a></li>
                         </ul>
                     </li>

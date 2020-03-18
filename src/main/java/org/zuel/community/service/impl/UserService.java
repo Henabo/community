@@ -18,6 +18,7 @@ public class UserService implements IUserService {
     @Override
     public void add(User model) {
         model.setAddTime(System.currentTimeMillis());
+        model.setAvatorUrl("https://i1.hdslb.com/bfs/face/c47dd5e63e179360daf0673a865c947cdc30a142.jpg_64x64.jpg");
         userMapper.insertSelective(model);
     }
 
