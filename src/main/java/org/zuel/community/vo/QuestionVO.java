@@ -4,7 +4,7 @@ import lombok.Data;
 import org.zuel.community.model.User;
 
 @Data
-public class IndexQuestionVO {
+public class QuestionVO {
     private Integer id;
     private Integer userId;
     private String title;

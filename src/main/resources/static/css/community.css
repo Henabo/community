@@ -121,3 +121,11 @@ a:active{
     padding:5px;
     border-bottom: 1px solid #f6f6f6;
 }
+.bottom-box{
+    border-bottom: #e5e5e5 2px solid;
+    padding-bottom: 2px;
+}
+.comment{
+    margin-top: 10px;
+    padding-bottom: 10px;
+}

@@ -2,7 +2,7 @@ package org.zuel.community.service;
 
 import com.github.pagehelper.PageInfo;
 import org.zuel.community.model.Question;
-import org.zuel.community.vo.IndexQuestionVO;
+import org.zuel.community.vo.QuestionVO;
 
 import java.util.List;
 
@@ -12,13 +12,17 @@ public interface IQuestionService {
 
     List<Question> select();
 
-    List<Question> selectIndexQuestion();
+    List<Question> selectQuestion();
 
-    PageInfo<IndexQuestionVO>selectIndexQuestionVOs(Integer pageNum, Integer pageSize);
+    PageInfo<QuestionVO>selectQuestionVOs(Integer pageNum, Integer pageSize);
 
-    List<IndexQuestionVO> selectIndexQuestionVOs();
+    List<QuestionVO> selectQuestionVOs();
 
     List<Question> selectByUserId(Integer userId);
 
-    PageInfo<IndexQuestionVO> selectByUserIdQuestionVOs(Integer userId, Integer pageNum, Integer pageSize);
+    PageInfo<QuestionVO> selectByUserIdQuestionVOs(Integer userId, Integer pageNum, Integer pageSize);
+
+    QuestionVO selectById(Integer id);
+
+    void updateViewCount(Integer id);
 }

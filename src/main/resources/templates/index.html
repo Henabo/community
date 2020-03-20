@@ -54,7 +54,7 @@
                     <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                         <div class="panel panel-info">
                             <div class="panel-heading" style="padding: 3px 10px">
-                                <h4><a href="#" class="index-questionTitle" th:text="${questionVO.title}">leetcode---多数元素(摩尔投票法)</a></h4>
+                                <h4><a th:href="@{'/question/'+${questionVO.id}}" class="index-questionTitle" th:text="${questionVO.title}">leetcode---多数元素(摩尔投票法)</a></h4>
                             </div>
                             <div class="panel-body">
                                 <p class="index-questionInfo ">
@@ -68,7 +68,7 @@
                                     <br>
                                 </p>
                                 <p class="index-questionText" th:text="${questionVO.content}">最近保持每天在leetcode上刷2道题，今天遇到了一道简单的题目，有很多方法，第一想到的是桶排，但没有给范围，排除了，其次就是整个数组排序一波，取中间就是了，随后也这样做了，不过做完去看题解就被这个摩尔投票惊艳到了，先mark下来。</p>
-                                <p></p><h5><a href="#" class="">阅读全文<span class="glyphicon glyphicon-menu-right"></span></a></h5><p></p>
+                                <p></p><h5><a th:href="@{'/question/'+${questionVO.id}}" class="">阅读全文<span class="glyphicon glyphicon-menu-right"></span></a></h5><p></p>
                             </div>
                         </div>
                     </div>

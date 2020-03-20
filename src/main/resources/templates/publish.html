@@ -3,11 +3,11 @@
 <head>
     <title>发布 - 信管问答社区 - hnb</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="css/community.css">
-    <script src="js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/community.css">
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
 
 </head>
 <body>
@@ -28,6 +28,7 @@
             <div class="boxShadow bkgColor-white" style="margin-top: 5px;border-radius: 5px">
                 <div style="margin: 20px;">
                     <form action="/publish" method="post">
+                        <input type="hidden" name="id" th:value="${id}">
                         <div class="form-group">
                             <label for="title" style="font-size:x-large">问题标题（简单扼要）</label>
                             <input type="text" class="form-control" th:value="${title}" id="title" name="title" placeholder="写下你的问题，准确地描述问题更容易得到解答">

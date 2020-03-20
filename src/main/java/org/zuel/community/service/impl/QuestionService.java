@@ -2,7 +2,6 @@ package org.zuel.community.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.util.QEncoderStream;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +11,7 @@ import org.zuel.community.model.Question;
 import org.zuel.community.model.QuestionExample;
 import org.zuel.community.model.User;
 import org.zuel.community.service.IQuestionService;
-import org.zuel.community.vo.IndexQuestionVO;
+import org.zuel.community.vo.QuestionVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,29 +48,31 @@ public class QuestionService implements IQuestionService {
     }
     private QuestionExample selectExample(){
         QuestionExample example = new QuestionExample();
+        example.setDistinct(true);
         QuestionExample.Criteria criteria = example.createCriteria();
         criteria.andDeletedEqualTo(false);
         return example;
     }
 
     @Override
-    public List<Question> selectIndexQuestion() {
-        List<Question> questionList = questionMapper.selectByExampleWithBLOBs(selectIndexQuestionExample());
+    public List<Question> selectQuestion() {
+        List<Question> questionList = questionMapper.selectByExampleWithBLOBs(selectQuestionExample());
         return questionList;
     }
 
     @Override
-    public PageInfo selectIndexQuestionVOs(Integer pageNum, Integer pageSize) {
+    public PageInfo selectQuestionVOs(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        List<Question> questionList = selectIndexQuestion();
+        List<Question> questionList = selectQuestion();
         PageInfo pageInfo = new PageInfo(questionList);
-        List<IndexQuestionVO> vos = models2vos(questionList);
+        List<QuestionVO> vos = models2vos(questionList);
         pageInfo.setList(vos);
         return pageInfo;
     }
 
-    private QuestionExample selectIndexQuestionExample(){
+    private QuestionExample selectQuestionExample(){
         QuestionExample example = new QuestionExample();
+        example.setDistinct(true);
         QuestionExample.Criteria criteria = example.createCriteria();
         criteria.andDeletedEqualTo(false);
         criteria.andDeletedEqualTo(false);
@@ -84,13 +85,14 @@ public class QuestionService implements IQuestionService {
      * @return
      */
     @Override
-    public List<IndexQuestionVO> selectIndexQuestionVOs() {
-        List<Question> questionList = questionMapper.selectByExampleWithBLOBs(selectIndexQuestionVOsExample());
+    public List<QuestionVO> selectQuestionVOs() {
+        List<Question> questionList = questionMapper.selectByExampleWithBLOBs(selectQuestionVOsExample());
         return models2vos(questionList);
     }
     //example语句
-    private QuestionExample selectIndexQuestionVOsExample(){
+    private QuestionExample selectQuestionVOsExample(){
         QuestionExample example = new QuestionExample();
+        example.setDistinct(true);
         QuestionExample.Criteria criteria = example.createCriteria();
         criteria.andShieldedEqualTo(false);
         criteria.andDeletedEqualTo(false);
@@ -104,6 +106,7 @@ public class QuestionService implements IQuestionService {
     //example，查询条件userid，并且未被拉黑的Question
     private QuestionExample selectByUserIdExample(Integer userId){
         QuestionExample example = new QuestionExample();
+        example.setDistinct(true);
         QuestionExample.Criteria criteria = example.createCriteria();
         criteria.andDeletedEqualTo(false);
         criteria.andShieldedEqualTo(false);
@@ -123,7 +126,7 @@ public class QuestionService implements IQuestionService {
         PageHelper.startPage(pageNum, pageSize);
         List<Question> questionList = selectByUserId(userId);
         PageInfo pageInfo = new PageInfo(questionList);
-        List<IndexQuestionVO> vos = models2vos(questionList);
+        List<QuestionVO> vos = models2vos(questionList);
         pageInfo.setList(vos);
         pageInfo.setPageNum(pageNum);
         Integer pages;
@@ -146,18 +149,45 @@ public class QuestionService implements IQuestionService {
         return pageInfo;
     }
 
+    @Override
+    public QuestionVO selectById(Integer id) {
+        Question question = questionMapper.selectByPrimaryKey(id);
+        QuestionVO questionVO = model2vo(question);
+        return questionVO;
+    }
 
+    @Override
+    public void updateViewCount(Integer id) {
+        Question question = questionMapper.selectByPrimaryKey(id);
+        question.setViewCount( question.getViewCount() + 1);
+        question.setUpdateTime(System.currentTimeMillis());
+        questionMapper.updateByPrimaryKeySelective(question);
+    }
+
+
+    // model to vo
+    private QuestionVO model2vo(Question model){
+        QuestionVO vo = new QuestionVO();
+        BeanUtils.copyProperties(model, vo);
+        if(vo.getUserId() != null){
+            User user = userMapper.selectByPrimaryKey(vo.getUserId());
+            if (user != null) {
+                vo.setUser(user);
+            }
+        }
+        return vo;
+    }
 
     //models to vos
-    private List<IndexQuestionVO> models2vos(List<Question> models){
-        List<IndexQuestionVO> vos = new ArrayList<>();
+    private List<QuestionVO> models2vos(List<Question> models){
+        List<QuestionVO> vos = new ArrayList<>();
         List<Integer> userIds = new ArrayList<>();
         models.forEach(model ->{
             //去除重复的userId，防止后面的Map中key的重复
             if(!userIds.contains(model.getUserId())){
                 userIds.add(model.getUserId());
             }
-            IndexQuestionVO vo = new IndexQuestionVO();
+            QuestionVO vo = new QuestionVO();
             BeanUtils.copyProperties(model, vo);
             vo.setUser(null);
             vos.add(vo);

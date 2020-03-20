@@ -4,14 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.zuel.community.model.Question;
 import org.zuel.community.model.User;
 import org.zuel.community.service.IQuestionService;
 import org.zuel.community.service.IUserService;
+import org.zuel.community.vo.QuestionVO;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
@@ -22,6 +23,14 @@ public class PublishController {
 
     @Autowired
     private IUserService userService;
+
+    @GetMapping("/publish/{id}")
+    public String edit(@PathVariable(name = "id") Integer id,
+                       Model model){
+        QuestionVO questionVO = questionService.selectById(id);
+        model.addAttribute("questionVO", questionVO);
+        return "publish";
+    }
 
     @GetMapping("/publish")
     public String publish(){
@@ -63,6 +72,7 @@ public class PublishController {
         question.setContent(content);
         question.setTag(tag);
         question.setUserId(user.getId());
+//        questionService.addOrUpdate(question);
         questionService.add(question);
         return "redirect:/";
     }
