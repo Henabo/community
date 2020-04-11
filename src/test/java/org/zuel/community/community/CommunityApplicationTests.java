@@ -51,4 +51,32 @@ class CommunityApplicationTests {
         list.add(1);
         list.add(2);
     }
+
+    @Test
+    void movingCount(){
+        int count = 0;
+        for(int i = 0; i < 16; i++){
+            int row = countSum(i);
+            for(int j = 0; j < 8; j++){
+                int column = countSum(j);
+                if((row + column) <= 4){
+                    count++;
+                }
+            }
+        }
+        System.out.println(count);
+    }
+
+    public int countSum(int num){
+        if(num < 10){
+            return num;
+        }
+        int sum = 0;
+        while(num >= 10){
+            sum += num % 10;
+            num = num / 10;
+        }
+        sum += num;
+        return sum;
+    }
 }
