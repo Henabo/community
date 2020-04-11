@@ -51,7 +51,6 @@ public interface UserMapper {
      * This method corresponds to the database table user
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     User selectOneByExample(UserExample example);
 
@@ -60,7 +59,6 @@ public interface UserMapper {
      * This method corresponds to the database table user
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     User selectOneByExampleSelective(@Param("example") UserExample example, @Param("selective") User.Column ... selective);
 
@@ -69,7 +67,6 @@ public interface UserMapper {
      * This method corresponds to the database table user
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     List<User> selectByExampleSelective(@Param("example") UserExample example, @Param("selective") User.Column ... selective);
 
@@ -86,7 +83,6 @@ public interface UserMapper {
      * This method corresponds to the database table user
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     User selectByPrimaryKeySelective(@Param("id") Integer id, @Param("selective") User.Column ... selective);
 
@@ -103,7 +99,6 @@ public interface UserMapper {
      * This method corresponds to the database table user
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     User selectByPrimaryKeyWithLogicalDelete(@Param("id") Integer id, @Param("andLogicalDeleted") boolean andLogicalDeleted);
 
@@ -144,7 +139,6 @@ public interface UserMapper {
      * This method corresponds to the database table user
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     int logicalDeleteByExample(@Param("example") UserExample example);
 
@@ -153,7 +147,6 @@ public interface UserMapper {
      * This method corresponds to the database table user
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     int logicalDeleteByPrimaryKey(Integer id);
 }

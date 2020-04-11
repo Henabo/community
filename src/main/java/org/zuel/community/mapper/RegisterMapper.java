@@ -51,7 +51,6 @@ public interface RegisterMapper {
      * This method corresponds to the database table register
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     Register selectOneByExample(RegisterExample example);
 
@@ -60,7 +59,6 @@ public interface RegisterMapper {
      * This method corresponds to the database table register
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     Register selectOneByExampleSelective(@Param("example") RegisterExample example, @Param("selective") Register.Column ... selective);
 
@@ -69,7 +67,6 @@ public interface RegisterMapper {
      * This method corresponds to the database table register
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     List<Register> selectByExampleSelective(@Param("example") RegisterExample example, @Param("selective") Register.Column ... selective);
 
@@ -86,7 +83,6 @@ public interface RegisterMapper {
      * This method corresponds to the database table register
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     Register selectByPrimaryKeySelective(@Param("id") Integer id, @Param("selective") Register.Column ... selective);
 
@@ -103,7 +99,6 @@ public interface RegisterMapper {
      * This method corresponds to the database table register
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     Register selectByPrimaryKeyWithLogicalDelete(@Param("id") Integer id, @Param("andLogicalDeleted") boolean andLogicalDeleted);
 
@@ -144,7 +139,6 @@ public interface RegisterMapper {
      * This method corresponds to the database table register
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     int logicalDeleteByExample(@Param("example") RegisterExample example);
 
@@ -153,7 +147,6 @@ public interface RegisterMapper {
      * This method corresponds to the database table register
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     int logicalDeleteByPrimaryKey(Integer id);
 }

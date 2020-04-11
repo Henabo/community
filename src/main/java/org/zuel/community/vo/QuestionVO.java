@@ -3,7 +3,7 @@ package org.zuel.community.vo;
 import lombok.Data;
 import org.zuel.community.model.User;
 
-@Data
+@Data 
 public class QuestionVO {
     private Integer id;
     private Integer userId;

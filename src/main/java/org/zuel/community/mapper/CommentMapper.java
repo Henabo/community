@@ -51,7 +51,6 @@ public interface CommentMapper {
      * This method corresponds to the database table comment
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     Comment selectOneByExample(CommentExample example);
 
@@ -60,7 +59,6 @@ public interface CommentMapper {
      * This method corresponds to the database table comment
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     Comment selectOneByExampleSelective(@Param("example") CommentExample example, @Param("selective") Comment.Column ... selective);
 
@@ -69,7 +67,6 @@ public interface CommentMapper {
      * This method corresponds to the database table comment
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     Comment selectOneByExampleWithBLOBs(CommentExample example);
 
@@ -78,7 +75,6 @@ public interface CommentMapper {
      * This method corresponds to the database table comment
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     List<Comment> selectByExampleSelective(@Param("example") CommentExample example, @Param("selective") Comment.Column ... selective);
 
@@ -103,7 +99,6 @@ public interface CommentMapper {
      * This method corresponds to the database table comment
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     Comment selectByPrimaryKeySelective(@Param("id") Integer id, @Param("selective") Comment.Column ... selective);
 
@@ -120,7 +115,6 @@ public interface CommentMapper {
      * This method corresponds to the database table comment
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     Comment selectByPrimaryKeyWithLogicalDelete(@Param("id") Integer id, @Param("andLogicalDeleted") boolean andLogicalDeleted);
 
@@ -177,7 +171,6 @@ public interface CommentMapper {
      * This method corresponds to the database table comment
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     int logicalDeleteByExample(@Param("example") CommentExample example);
 
@@ -186,7 +179,6 @@ public interface CommentMapper {
      * This method corresponds to the database table comment
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     int logicalDeleteByPrimaryKey(Integer id);
 }

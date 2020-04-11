@@ -51,7 +51,6 @@ public interface QuestionMapper {
      * This method corresponds to the database table question
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     Question selectOneByExample(QuestionExample example);
 
@@ -60,7 +59,6 @@ public interface QuestionMapper {
      * This method corresponds to the database table question
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     Question selectOneByExampleSelective(@Param("example") QuestionExample example, @Param("selective") Question.Column ... selective);
 
@@ -69,7 +67,6 @@ public interface QuestionMapper {
      * This method corresponds to the database table question
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     Question selectOneByExampleWithBLOBs(QuestionExample example);
 
@@ -78,7 +75,6 @@ public interface QuestionMapper {
      * This method corresponds to the database table question
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     List<Question> selectByExampleSelective(@Param("example") QuestionExample example, @Param("selective") Question.Column ... selective);
 
@@ -103,7 +99,6 @@ public interface QuestionMapper {
      * This method corresponds to the database table question
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     Question selectByPrimaryKeySelective(@Param("id") Integer id, @Param("selective") Question.Column ... selective);
 
@@ -120,7 +115,6 @@ public interface QuestionMapper {
      * This method corresponds to the database table question
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     Question selectByPrimaryKeyWithLogicalDelete(@Param("id") Integer id, @Param("andLogicalDeleted") boolean andLogicalDeleted);
 
@@ -177,7 +171,6 @@ public interface QuestionMapper {
      * This method corresponds to the database table question
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     int logicalDeleteByExample(@Param("example") QuestionExample example);
 
@@ -186,7 +179,6 @@ public interface QuestionMapper {
      * This method corresponds to the database table question
      *
      * @mbg.generated
-     * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     int logicalDeleteByPrimaryKey(Integer id);
 }
