@@ -1,4 +1,4 @@
-package org.zuel.community.community;
+package org.zuel.community;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

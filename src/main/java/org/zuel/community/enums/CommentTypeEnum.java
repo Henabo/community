@@ -1,5 +1,9 @@
 package org.zuel.community.enums;
 
+/**
+ * @author henabo
+ */
+
 public enum CommentTypeEnum {
     QUESTION(false),
     COMMENT(true)

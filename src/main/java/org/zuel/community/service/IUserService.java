@@ -31,7 +31,19 @@ public interface IUserService {
      * @return
      */
     List<User> selete();
+
+    /**
+     * 通过用户名查询
+     * @param userName
+     * @return
+     */
     User selectByUserName(String userName);
 
+    /**
+     * 登陆
+     * @param userName
+     * @param password
+     * @return
+     */
     User login(String userName, String password);
 }

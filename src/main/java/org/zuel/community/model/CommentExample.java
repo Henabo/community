@@ -352,6 +352,96 @@ public class CommentExample {
             return (Criteria) this;
         }
 
+        public Criteria andQuestionIdIsNull() {
+            addCriterion("question_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionIdIsNotNull() {
+            addCriterion("question_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionIdEqualTo(Integer value) {
+            addCriterion("question_id =", value, "questionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionIdEqualToColumn(Comment.Column column) {
+            addCriterion(new StringBuilder("question_id = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionIdNotEqualTo(Integer value) {
+            addCriterion("question_id <>", value, "questionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionIdNotEqualToColumn(Comment.Column column) {
+            addCriterion(new StringBuilder("question_id <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionIdGreaterThan(Integer value) {
+            addCriterion("question_id >", value, "questionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionIdGreaterThanColumn(Comment.Column column) {
+            addCriterion(new StringBuilder("question_id > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("question_id >=", value, "questionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionIdGreaterThanOrEqualToColumn(Comment.Column column) {
+            addCriterion(new StringBuilder("question_id >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionIdLessThan(Integer value) {
+            addCriterion("question_id <", value, "questionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionIdLessThanColumn(Comment.Column column) {
+            addCriterion(new StringBuilder("question_id < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionIdLessThanOrEqualTo(Integer value) {
+            addCriterion("question_id <=", value, "questionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionIdLessThanOrEqualToColumn(Comment.Column column) {
+            addCriterion(new StringBuilder("question_id <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionIdIn(List<Integer> values) {
+            addCriterion("question_id in", values, "questionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionIdNotIn(List<Integer> values) {
+            addCriterion("question_id not in", values, "questionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionIdBetween(Integer value1, Integer value2) {
+            addCriterion("question_id between", value1, value2, "questionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("question_id not between", value1, value2, "questionId");
+            return (Criteria) this;
+        }
+
         public Criteria andUserIdIsNull() {
             addCriterion("user_id is null");
             return (Criteria) this;

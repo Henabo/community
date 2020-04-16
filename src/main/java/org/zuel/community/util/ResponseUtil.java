@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class ResponseUtil {
     /**
+     * 常用
      * 返回Map，
      * errno：返回码
      * errmsg：返回信息
@@ -18,6 +19,7 @@ public class ResponseUtil {
         return obj;
     }
     /**
+     * 常用
      * 返回Map
      * errno:返回码
      * errmsg:返回信息
@@ -33,6 +35,7 @@ public class ResponseUtil {
         return obj;
     }
     /**
+     * 不常用
      * data里面有total和list属性两个
      * @param total
      * @param list
@@ -45,7 +48,7 @@ public class ResponseUtil {
         return ok(data);
     }
     /**
-     *
+     * 不常用
      * @param errmsg
      * @param data
      * @return
@@ -103,5 +106,7 @@ public class ResponseUtil {
 
     public static Object badArgument(){return fail(502,"系统内部错误");}
 
+    public static Object questionNotExist(){return fail(301, "问题不存在");}
 
+    public static Object commentContentIsEmpty(){return fail(401, "回答内容为空");}
 }

@@ -11,7 +11,7 @@ import org.zuel.community.util.ResponseUtil;
 import java.util.List;
 
 @Service
-public class RegisterService implements IRegisterService {
+public class RegisterServiceImpl implements IRegisterService {
     @Autowired
     private RegisterMapper registerMapper;
 

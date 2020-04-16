@@ -1,7 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="GROUP_BY_SEVERITY" value="true" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d773a7ba-5dc2-41e2-9fc5-49729e68c4b9" name="Default Changelist" comment="" />
+    <list default="true" id="d773a7ba-5dc2-41e2-9fc5-49729e68c4b9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/service/impl/CommentServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/community.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community.iml" beforeDir="false" afterPath="$PROJECT_DIR$/community.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/advice/CustomizeExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/advice/CustomizeExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/controller/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/controller/QuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/controller/QuestionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/enums/CommentTypeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/enums/CommentTypeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/interceptor/LoginInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/interceptor/LoginInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/model/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/model/CommentExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/model/CommentExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/service/ICommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/service/ICommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/service/IQuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/service/IQuestionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/service/IUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/service/impl/CommentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/service/impl/CommonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/service/impl/CommonServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/service/impl/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/service/impl/QuestionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/service/impl/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/service/impl/RegisterServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/service/impl/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/util/ResponseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/util/ResponseUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/vo/CommentVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/vo/CommentVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zuel/community/vo/QuestionVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zuel/community/vo/QuestionVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/CommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/CommentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/community.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/community.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/question.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/question.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/zuel/community/community/CommunityApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/zuel/community/CommunityApplicationTests.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -97,7 +134,8 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -118,81 +156,21 @@
       <recent name="E:\my-project\community\src\main\resources\static\js" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.CommunityApplication">
-    <configuration name="CommunityApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="community" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.zuel.community.community.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.zuel.community.community" />
-      <option name="MAIN_CLASS_NAME" value="org.zuel.community.community.CommunityApplicationTests" />
-      <option name="METHOD_NAME" value="contextLoads" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CommunityApplicationTests.duckTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="community" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.zuel.community.community.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.zuel.community.community" />
-      <option name="MAIN_CLASS_NAME" value="org.zuel.community.community.CommunityApplicationTests" />
-      <option name="METHOD_NAME" value="duckTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CommunityApplicationTests.reverseList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="community" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.zuel.community.community.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.zuel.community.community" />
-      <option name="MAIN_CLASS_NAME" value="org.zuel.community.community.CommunityApplicationTests" />
-      <option name="METHOD_NAME" value="reverseList" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="community [mybatis-generator:generate,-e]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="mybatis-generator:generate" />
-                <option value="-e" />
-              </list>
-            </option>
-            <option name="pomFileName" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
+  <component name="RestServicesNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="Found 11 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+        </path>
+        <path>
+          <item name="Found 11 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+          <item name="community" type="c588b436:RestServiceStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="RunManager">
     <configuration name="CommunityApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="community" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.zuel.community.CommunityApplication" />
@@ -200,20 +178,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="JUnit.CommunityApplicationTests.contextLoads" />
-      <item itemvalue="JUnit.CommunityApplicationTests.duckTest" />
-      <item itemvalue="JUnit.CommunityApplicationTests.reverseList" />
-      <item itemvalue="Maven.community [mybatis-generator:generate,-e]" />
-      <item itemvalue="Spring Boot.CommunityApplication" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.CommunityApplicationTests.reverseList" />
-        <item itemvalue="JUnit.CommunityApplicationTests.duckTest" />
-        <item itemvalue="JUnit.CommunityApplicationTests.contextLoads" />
-      </list>
-    </recent_temporary>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",SHOW_PROPERTIES,SHOW_LAMBDA,SHOW_ANONYMOUS" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -242,7 +209,16 @@
       <workItem from="1586524959595" duration="1529000" />
       <workItem from="1586574371049" duration="2327000" />
       <workItem from="1586578548196" duration="190000" />
-      <workItem from="1586579222265" duration="5366000" />
+      <workItem from="1586579222265" duration="10422000" />
+      <workItem from="1586770853980" duration="5112000" />
+      <workItem from="1586946876687" duration="746000" />
+      <workItem from="1586949829742" duration="39000" />
+      <workItem from="1586949884725" duration="51000" />
+      <workItem from="1586949949644" duration="177000" />
+      <workItem from="1586950139808" duration="377000" />
+      <workItem from="1586950528092" duration="407000" />
+      <workItem from="1586950952012" duration="1894000" />
+      <workItem from="1586953095240" duration="21191000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1583660174762</created>
@@ -342,7 +318,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586599678886</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="commit">
+      <created>1586600003577</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1586600003577</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView">
@@ -446,66 +429,114 @@
     <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586582466849">
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586601590947">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1586582466849" />
-    <state x="185" y="52" key="CommitChangelistDialog2" timestamp="1586599678625">
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1586601590947" />
+    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1587030500822">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="185" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1586599678625" />
-    <state width="1398" height="239" key="GridCell.Tab.0.bottom" timestamp="1586599045118">
+    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1587030500822" />
+    <state x="304" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586951328528">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="239" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586599045118" />
-    <state width="1398" height="239" key="GridCell.Tab.0.center" timestamp="1586599045116">
+    <state x="304" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.900@0.0.1440.900" timestamp="1586951328528" />
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586957015133">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="239" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1586599045116" />
-    <state width="1398" height="239" key="GridCell.Tab.0.left" timestamp="1586599045115">
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1586957015133" />
+    <state x="185" y="52" key="CommitChangelistDialog2" timestamp="1586600003433">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="239" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1586599045115" />
-    <state width="1398" height="239" key="GridCell.Tab.0.right" timestamp="1586599045117">
+    <state x="185" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1586600003433" />
+    <state width="1398" height="225" key="GridCell.Tab.0.bottom" timestamp="1587044822737">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="239" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1586599045117" />
-    <state width="1398" height="239" key="GridCell.Tab.1.bottom" timestamp="1586599045120">
+    <state width="1398" height="225" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1587044822737" />
+    <state width="1398" height="225" key="GridCell.Tab.0.center" timestamp="1587044822735">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="239" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586599045120" />
-    <state width="1398" height="239" key="GridCell.Tab.1.center" timestamp="1586599045119">
+    <state width="1398" height="225" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1587044822735" />
+    <state width="1398" height="225" key="GridCell.Tab.0.left" timestamp="1587044822734">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="239" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1586599045119" />
-    <state width="1398" height="239" key="GridCell.Tab.1.left" timestamp="1586599045118">
+    <state width="1398" height="225" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1587044822734" />
+    <state width="1398" height="225" key="GridCell.Tab.0.right" timestamp="1587044822736">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="239" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1586599045118" />
-    <state width="1398" height="239" key="GridCell.Tab.1.right" timestamp="1586599045119">
+    <state width="1398" height="225" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1587044822736" />
+    <state width="1398" height="225" key="GridCell.Tab.1.bottom" timestamp="1587044822739">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="239" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1586599045119" />
+    <state width="1398" height="225" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1587044822739" />
+    <state width="1398" height="303" key="GridCell.Tab.1.bottom/53.23.1387.877@53.23.1387.877" timestamp="1587032555760" />
+    <state width="1398" height="225" key="GridCell.Tab.1.center" timestamp="1587044822738">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="225" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1587044822738" />
+    <state width="1398" height="303" key="GridCell.Tab.1.center/53.23.1387.877@53.23.1387.877" timestamp="1587032555758" />
+    <state width="1398" height="225" key="GridCell.Tab.1.left" timestamp="1587044822737">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="225" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1587044822737" />
+    <state width="1398" height="303" key="GridCell.Tab.1.left/53.23.1387.877@53.23.1387.877" timestamp="1587032555758" />
+    <state width="1398" height="225" key="GridCell.Tab.1.right" timestamp="1587044822738">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="225" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1587044822738" />
+    <state width="1398" height="303" key="GridCell.Tab.1.right/53.23.1387.877@53.23.1387.877" timestamp="1587032555759" />
+    <state width="1398" height="303" key="GridCell.Tab.2.bottom" timestamp="1587032765990">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="303" key="GridCell.Tab.2.bottom/0.0.1440.900@0.0.1440.900" timestamp="1587032765990" />
+    <state width="1398" height="303" key="GridCell.Tab.2.center" timestamp="1587032765988">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="303" key="GridCell.Tab.2.center/0.0.1440.900@0.0.1440.900" timestamp="1587032765988" />
+    <state width="1398" height="303" key="GridCell.Tab.2.left" timestamp="1587032765988">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="303" key="GridCell.Tab.2.left/0.0.1440.900@0.0.1440.900" timestamp="1587032765988" />
+    <state width="1398" height="303" key="GridCell.Tab.2.right" timestamp="1587032765989">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="303" key="GridCell.Tab.2.right/0.0.1440.900@0.0.1440.900" timestamp="1587032765989" />
     <state x="431" y="173" key="MultipleFileMergeDialog" timestamp="1586599957081">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="431" y="173" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1586599957081" />
-    <state x="221" y="89" key="SettingsEditor" timestamp="1586594961121">
+    <state x="221" y="89" key="SettingsEditor" timestamp="1586956999454">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1586594961121" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1586599696724">
+    <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1586956999454" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1586600063971">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1586599696724" />
-    <state x="423" y="248" key="git4idea.merge.GitPullDialog" timestamp="1586599628550">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1586600063971" />
+    <state x="503" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586957098539">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="423" y="248" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1586599628550" />
+    <state x="503" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1586957098539" />
+    <state x="269" y="193" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1587032762112">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="269" y="193" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1440.900@0.0.1440.900" timestamp="1587032762112" />
+    <state x="378" y="85" width="683" height="729" key="find.popup" timestamp="1586957771757">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="378" y="85" width="683" height="729" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1586957771757" />
+    <state x="423" y="248" key="git4idea.merge.GitPullDialog" timestamp="1586600078673">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="423" y="248" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1586600078673" />
     <state x="106" y="161" key="new project wizard" timestamp="1586577834279">
       <screen x="53" y="23" width="1387" height="877" />
     </state>
     <state x="106" y="161" key="new project wizard/53.23.1387.877@53.23.1387.877" timestamp="1586577834279" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1587044017835">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1587044017835" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class QuestionService implements IQuestionService {
+public class QuestionServiceImpl implements IQuestionService {
 
     @Autowired
     private QuestionMapper questionMapper;
@@ -27,7 +27,7 @@ public class QuestionService implements IQuestionService {
     private UserMapper userMapper;
 
     @Autowired
-    private CommonService commonService;
+    private CommonServiceImpl commonService;
 
 
     @Override
@@ -38,7 +38,8 @@ public class QuestionService implements IQuestionService {
     }
 
     /**
-     * 查询出未删除的数据，（不考虑屏蔽）
+     * 查询问题，(没删除)（不考虑屏蔽）
+     * 最新回答问题时间倒序
      * @return
      */
     @Override
@@ -54,12 +55,35 @@ public class QuestionService implements IQuestionService {
         return example;
     }
 
+    /**
+     * 查询问题，（没删除、没屏蔽）
+     * 最新回答问题时间倒序
+     * @return
+     */
     @Override
     public List<Question> selectQuestion() {
         List<Question> questionList = questionMapper.selectByExampleWithBLOBs(selectQuestionExample());
         return questionList;
     }
+    private QuestionExample selectQuestionExample(){
+        QuestionExample example = new QuestionExample();
+        example.setDistinct(true);
+        QuestionExample.Criteria criteria = example.createCriteria();
+        criteria.andDeletedEqualTo(false);
+        criteria.andDeletedEqualTo(false);
+        example.setOrderByClause("answer_time desc");
+        return example;
+    }
 
+
+    /**
+     * PageInfo的特殊原因，如果需要查找多少页只能在原表上进行查找
+     * 所以只能在原标上进行查找之后，再将model改为vo类型
+     * 查找原表顺序为回答时间倒序
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     @Override
     public PageInfo selectQuestionVOs(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
@@ -70,18 +94,10 @@ public class QuestionService implements IQuestionService {
         return pageInfo;
     }
 
-    private QuestionExample selectQuestionExample(){
-        QuestionExample example = new QuestionExample();
-        example.setDistinct(true);
-        QuestionExample.Criteria criteria = example.createCriteria();
-        criteria.andDeletedEqualTo(false);
-        criteria.andDeletedEqualTo(false);
-        return example;
-    }
-
 
     /**
-     * 查询出questionVOs，考虑屏蔽
+     * 查询出questionVOs，（没删除、没屏蔽）
+     * 回答时间倒序
      * @return
      */
     @Override
@@ -89,21 +105,27 @@ public class QuestionService implements IQuestionService {
         List<Question> questionList = questionMapper.selectByExampleWithBLOBs(selectQuestionVOsExample());
         return models2vos(questionList);
     }
-    //example语句
     private QuestionExample selectQuestionVOsExample(){
         QuestionExample example = new QuestionExample();
         example.setDistinct(true);
         QuestionExample.Criteria criteria = example.createCriteria();
         criteria.andShieldedEqualTo(false);
         criteria.andDeletedEqualTo(false);
+        example.setOrderByClause("answer_time desc");
         return example;
     }
+
+    /**
+     * 查找user所有提出的问题（没删除、没屏蔽）
+     * 回答时间倒序？（应该是提出问题的倒序）已改
+     * @param userId
+     * @return
+     */
     @Override
     public List<Question> selectByUserId(Integer userId) {
         List<Question> questionList = questionMapper.selectByExampleWithBLOBs(selectByUserIdExample(userId));
         return questionList;
     }
-    //example，查询条件userid，并且未被拉黑的Question
     private QuestionExample selectByUserIdExample(Integer userId){
         QuestionExample example = new QuestionExample();
         example.setDistinct(true);
@@ -111,8 +133,20 @@ public class QuestionService implements IQuestionService {
         criteria.andDeletedEqualTo(false);
         criteria.andShieldedEqualTo(false);
         criteria.andUserIdEqualTo(userId);
+        example.setOrderByClause("add_time desc");
         return example;
     }
+
+    /**
+     * 用户提出问题分页处理，应该先在原表上进行查找
+     * 找到所有question，然后分页就好了，我写的麻烦了但也没问题
+     * 找到user提出的所有问题（没删除、没屏蔽）
+     * 添加问题时间倒序
+     * @param userId
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     @Override
     public PageInfo selectByUserIdQuestionVOs(Integer userId, Integer pageNum, Integer pageSize) {
         List<Question> questiontempList = selectByUserId(userId);
@@ -149,6 +183,11 @@ public class QuestionService implements IQuestionService {
         return pageInfo;
     }
 
+    /**
+     * 根据id查找vo（不考虑删除，不考虑屏蔽）
+     * @param id
+     * @return
+     */
     @Override
     public QuestionVO selectById(Integer id) {
         Question question = questionMapper.selectByPrimaryKey(id);
@@ -156,6 +195,10 @@ public class QuestionService implements IQuestionService {
         return questionVO;
     }
 
+    /**
+     * 阅读量+1
+     * @param id
+     */
     @Override
     public void updateViewCount(Integer id) {
         Question question = questionMapper.selectByPrimaryKey(id);
@@ -164,8 +207,24 @@ public class QuestionService implements IQuestionService {
         questionMapper.updateByPrimaryKeySelective(question);
     }
 
+    /**
+     * 回答数+1
+     * @param id
+     */
+    @Override
+    public void updateCommentCount(Integer id) {
+        Question question = questionMapper.selectByPrimaryKey(id);
+        question.setCommentCount(question.getCommentCount() + 1);
+        question.setUpdateTime(System.currentTimeMillis());
+        questionMapper.updateByPrimaryKeySelective(question);
+    }
 
-    // model to vo
+
+    /**
+     * model to vo
+     * @param model
+     * @return
+     */
     private QuestionVO model2vo(Question model){
         QuestionVO vo = new QuestionVO();
         BeanUtils.copyProperties(model, vo);
@@ -178,7 +237,11 @@ public class QuestionService implements IQuestionService {
         return vo;
     }
 
-    //models to vos
+    /**
+     * models to vos
+     * @param models
+     * @return
+     */
     private List<QuestionVO> models2vos(List<Question> models){
         List<QuestionVO> vos = new ArrayList<>();
         List<Integer> userIds = new ArrayList<>();

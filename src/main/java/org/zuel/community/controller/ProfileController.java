@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.zuel.community.model.User;
-import org.zuel.community.service.impl.QuestionService;
+import org.zuel.community.service.IQuestionService;
+import org.zuel.community.service.impl.QuestionServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ProfileController {
     @Autowired
-    private QuestionService questionService;
+    private IQuestionService questionService;
 
 
     @GetMapping("/profile/{action}")

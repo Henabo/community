@@ -1,6 +1,5 @@
 package org.zuel.community.controller;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,10 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.zuel.community.model.Comment;
 import org.zuel.community.service.ICommentService;
-import org.zuel.community.vo.CommentVO;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 @ResponseBody
@@ -21,13 +16,17 @@ public class CommentController {
     @Autowired
     private ICommentService commentService;
 
+    /*API，JSON的方式传值给前段*/
+
+    /**
+     * '@RequestBody'注释反序列化JSON为java对象
+     * 接受的类型必须是application/json，因此如果用postman进行api测试的时候
+     * 得在Header里面加入Content-Type:application/json
+     * @param comment
+     * @return
+     */
     @RequestMapping(value = "/comment",method = RequestMethod.POST)
-    public Object post(@RequestBody CommentVO commentVO){
-        Comment comment = new Comment();
-        BeanUtils.copyProperties(commentVO, comment);
-        commentService.add(comment);
-        Map<Object, Object> obj = new HashMap<>();
-        obj.put("message", "成功！！");
-        return obj;
+    public Object post(@RequestBody Comment comment){
+        return commentService.add(comment);
     }
 }

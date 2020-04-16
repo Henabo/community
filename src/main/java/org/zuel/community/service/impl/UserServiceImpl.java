@@ -11,7 +11,7 @@ import org.zuel.community.util.ResponseUtil;
 import java.util.List;
 
 @Service
-public class UserService implements IUserService {
+public class UserServiceImpl implements IUserService {
     @Autowired
     private UserMapper userMapper;
 
@@ -58,6 +58,7 @@ public class UserService implements IUserService {
         return userList.get(0);
     }
 
+    @Override
     public User login(String userName, String password){
         UserExample example = new UserExample();
         example.setDistinct(true);
