@@ -12,6 +12,8 @@ import org.zuel.community.vo.QuestionVO;
 
 import java.util.List;
 
+import static org.zuel.community.enums.CommentTypeEnum.QUESTION_TYPE;
+
 @Controller
 public class QuestionController {
     @Autowired
@@ -22,11 +24,14 @@ public class QuestionController {
     @GetMapping("/question/{id}")
     public String question(@PathVariable(name = "id") Integer id, Model model){
         questionService.updateViewCount(id);
-        QuestionVO questionVO = questionService.selectById(id);
-        List<CommentVO> commentVOS = commentService.readByQuestionId(id);
 
-         model.addAttribute("comments", commentVOS);
+        QuestionVO questionVO = questionService.selectById(id);
+        List<CommentVO> commentVOS = commentService.readByTargetId(id, QUESTION_TYPE.getType());
+        List<QuestionVO> relatedQuestionVOs = questionService.selectByTags(questionVO.getId(), questionVO.getTag());
+
+        model.addAttribute("comments", commentVOS);
         model.addAttribute("questionVO",questionVO);
+        model.addAttribute("relatedQuestionVOs",relatedQuestionVOs);
         return "question";
     }
 }

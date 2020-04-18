@@ -2,12 +2,11 @@ package org.zuel.community.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.zuel.community.model.Comment;
 import org.zuel.community.service.ICommentService;
+
+import static org.zuel.community.enums.CommentTypeEnum.COMMENT_TYPE;
 
 @Controller
 @ResponseBody
@@ -28,5 +27,10 @@ public class CommentController {
     @RequestMapping(value = "/comment",method = RequestMethod.POST)
     public Object post(@RequestBody Comment comment){
         return commentService.add(comment);
+    }
+
+    @RequestMapping(value = "/comment/{id}",method = RequestMethod.GET)
+    public Object comments(@PathVariable (name = "id") Integer id){
+        return commentService.readByCommentId(id, COMMENT_TYPE.getType());
     }
 }

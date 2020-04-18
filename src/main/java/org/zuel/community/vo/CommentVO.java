@@ -16,6 +16,7 @@ public class CommentVO {
     private Boolean shielded;
     private Long addTime;
     private Long updateTime;
+    private Integer commentCount;
 
     private String userName;
     private String avatorUrl;

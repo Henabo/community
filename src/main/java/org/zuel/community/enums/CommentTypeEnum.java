@@ -5,8 +5,8 @@ package org.zuel.community.enums;
  */
 
 public enum CommentTypeEnum {
-    QUESTION(false),
-    COMMENT(true)
+    QUESTION_TYPE(false),
+    COMMENT_TYPE(true)
     ;
     private Boolean type;
 

@@ -145,3 +145,13 @@ a:active{
     border-top: 1px solid #eeeeee;
     padding-bottom: 10px;
 }
+
+.commentIconActive{
+    color: #0084ff;
+}
+
+.sub-comment{
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+
+}

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zuel.community.mapper.CommentMapper;
+import org.zuel.community.mapper.QuestionMapper;
 import org.zuel.community.model.Comment;
 import org.zuel.community.model.CommentExample;
 import org.zuel.community.model.Question;
@@ -13,7 +14,6 @@ import org.zuel.community.service.ICommentService;
 import org.zuel.community.service.IQuestionService;
 import org.zuel.community.util.ResponseUtil;
 import org.zuel.community.vo.CommentVO;
-import org.zuel.community.vo.QuestionVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +23,9 @@ import java.util.Map;
 public class CommentServiceImpl implements ICommentService {
     @Autowired
     private CommentMapper commentMapper;
+
+    @Autowired
+    private QuestionMapper questionMapper;
 
     @Autowired
     private IQuestionService questionService;
@@ -43,7 +46,11 @@ public class CommentServiceImpl implements ICommentService {
         }
         model.setAddTime(System.currentTimeMillis());
         commentMapper.insertSelective(model);
-        questionService.updateCommentCount(model.getQuestionId());
+        if(!model.getType()){
+            questionService.updateCommentCount(model.getQuestionId());
+        }else {
+            updateCommentCount(model.getQuestionId());
+        }
         return ResponseUtil.ok();
     }
 
@@ -53,8 +60,8 @@ public class CommentServiceImpl implements ICommentService {
      * @return CommentVO类
      */
     @Override
-    public List<CommentVO> readByQuestionId(Integer questionId) {
-        List<CommentVO> commentVOS = models2vos(selectByQuestionId(questionId));
+    public List<CommentVO> readByTargetId(Integer questionId, Boolean type) {
+        List<CommentVO> commentVOS = models2vos(selectByQuestionId(questionId, type));
         return commentVOS;
     }
 
@@ -64,16 +71,42 @@ public class CommentServiceImpl implements ICommentService {
      * @return
      */
     @Override
-    public List<Comment> selectByQuestionId(Integer questionId) {
-        List<Comment> comments = commentMapper.selectByExampleWithBLOBs(selectByQuestionIdExample(questionId));
+    public List<Comment> selectByQuestionId(Integer questionId, Boolean type) {
+        List<Comment> comments = commentMapper.selectByExampleWithBLOBs(selectByQuestionIdExample(questionId, type));
         return comments;
     }
-    private CommentExample selectByQuestionIdExample(Integer questionId){
+
+    @Override
+    public Object readByCommentId(Integer id, Boolean type) {
+        List<CommentVO> commentVOS = models2vos(selectByQuestionId(id, type));
+        return ResponseUtil.ok(commentVOS);
+    }
+
+    /**
+     * 回答的回答数量+1
+     * @param id
+     */
+    @Override
+    public void updateCommentCount(Integer id) {
+        Comment comment = commentMapper.selectByPrimaryKey(id);
+        comment.setCommentCount(comment.getCommentCount() + 1);
+        comment.setUpdateTime(System.currentTimeMillis());
+        Boolean type = comment.getType();
+        //评论回答的时候，这个问题的回答时间也应该修改
+        Question question = questionMapper.selectByPrimaryKey(comment.getQuestionId());
+        question.setAnswerTime(System.currentTimeMillis());
+        question.setUpdateTime(System.currentTimeMillis());
+        questionMapper.updateByPrimaryKeySelective(question);
+        commentMapper.updateByPrimaryKeySelective(comment);
+    }
+
+    private CommentExample selectByQuestionIdExample(Integer questionId, boolean type){
         CommentExample example = new CommentExample();
         example.setDistinct(true);
         CommentExample.Criteria criteria = example.createCriteria();
         criteria.andShieldedEqualTo(false);
         criteria.andDeletedEqualTo(false);
+        criteria.andTypeEqualTo(type);
         criteria.andQuestionIdEqualTo(questionId);
         example.setOrderByClause("add_time desc");
         return example;

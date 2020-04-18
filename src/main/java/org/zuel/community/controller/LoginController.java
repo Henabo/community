@@ -28,7 +28,7 @@ public class LoginController {
                         HttpServletRequest request,
                         HttpServletResponse response){
          User user = userService.login(userName, password);
-         if(user ==null){
+         if(user == null){
              return "login";
          }else{
              response.addCookie(new Cookie("herb_userName",userName));

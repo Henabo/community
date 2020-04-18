@@ -1,5 +1,6 @@
 package org.zuel.community.service.impl;
 
+import com.alibaba.druid.util.StringUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
@@ -14,6 +15,7 @@ import org.zuel.community.service.IQuestionService;
 import org.zuel.community.vo.QuestionVO;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -208,7 +210,7 @@ public class QuestionServiceImpl implements IQuestionService {
     }
 
     /**
-     * 回答数+1
+     * 回答数+1,回答的时候需要修改回答时间
      * @param id
      */
     @Override
@@ -216,7 +218,36 @@ public class QuestionServiceImpl implements IQuestionService {
         Question question = questionMapper.selectByPrimaryKey(id);
         question.setCommentCount(question.getCommentCount() + 1);
         question.setUpdateTime(System.currentTimeMillis());
+        question.setAnswerTime(System.currentTimeMillis());
         questionMapper.updateByPrimaryKeySelective(question);
+    }
+
+    /**
+     * 通过标签查找所有问题
+     * @param tags
+     * @return
+     */
+    @Override
+    public List<QuestionVO> selectByTags(Integer id, String tags) {
+        List<QuestionVO> questionVOS = new ArrayList<>();
+        if(com.alibaba.druid.util.StringUtils.isEmpty(tags)){
+            return new ArrayList<>();
+        }
+        List<String> tagList = new ArrayList<>(Arrays.asList(tags.split(",")));
+        questionVOS = models2vos(questionMapper.selectByExampleWithBLOBs(selectByTagsExample(id, tagList)));
+        return questionVOS;
+    }
+    private QuestionExample selectByTagsExample (Integer id, List<String> tagList){
+        QuestionExample example = new QuestionExample();
+        example.setDistinct(true);
+        QuestionExample.Criteria criteria = example.createCriteria();
+        for (String tag : tagList) {
+            criteria.andTagLike(tag);
+        }
+        criteria.andDeletedEqualTo(false);
+        criteria.andShieldedEqualTo(false);
+        criteria.andIdNotEqualTo(id);
+        return example;
     }
 
 

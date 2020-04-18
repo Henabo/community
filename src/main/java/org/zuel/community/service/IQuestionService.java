@@ -74,4 +74,11 @@ public interface IQuestionService {
      * @param id
      */
     void updateCommentCount(Integer id);
+
+    /**
+     * 通过标签查找问题
+     * @param tags
+     * @return
+     */
+    List<QuestionVO> selectByTags(Integer id, String tags);
 }
