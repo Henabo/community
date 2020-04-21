@@ -155,3 +155,9 @@ a:active{
     border-radius: 5px;
 
 }
+
+.label-information{
+    white-space: normal;
+    margin: 5px 5px;
+    display: inline-block;
+}

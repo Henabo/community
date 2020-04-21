@@ -39,6 +39,21 @@ public class QuestionServiceImpl implements IQuestionService {
         questionMapper.insertSelective(model);
     }
 
+    @Override
+    public void updateOrAdd(Question model) {
+        if (model.getId() == 0 || model.getId() == null){
+            add(model);
+        }else {
+            update(model);
+        }
+    }
+
+    @Override
+    public void update(Question model) {
+        model.setUpdateTime(System.currentTimeMillis());
+        questionMapper.updateByPrimaryKeySelective(model);
+    }
+
     /**
      * 查询问题，(没删除)（不考虑屏蔽）
      * 最新回答问题时间倒序

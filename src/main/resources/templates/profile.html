@@ -19,16 +19,17 @@
 <div class="container main">
 
     <div style="height: 200px;width: 100%;padding-top: 60px;
-         background-image: url(https://i0.hdslb.com/bfs/space/cb1c3ef50e22b6096fde67febe863494caefebad.png);">
+         background-image: url(/images/bilibili.png);">
         <div style="float: left;">
             <img th:src="${session.user.avatorUrl}" alt="" class="img-rounded" style="height: 120px;width: 120px;margin-left: 50px;">
         </div>
         <div style="float: left;margin-top: 30px">
-            <strong style="font-size: xx-large;color: #fff;margin-left: 15px" th:text="${session.user.userName}"></strong>
+            <strong style="font-size: xx-large;color: black;margin-left: 15px" th:text="${session.user.userName}"></strong>
             <br>
             <div th:if="${session.user.blacklisted == false}">
                 <strong style="color: #A30014;margin-left: 150px;">您已被管理员拉黑，请和管理员联系，让老大给你拉白</strong>
-                <span style="color: #f7f7f7;">（由于您被拉黑，您的问题、回答其他人不可见）</span>
+                <br>
+                <span style="color: #A30014;margin-left: 150px;">（由于您被拉黑，您的问题、回答其他人不可见）</span>
             </div>
         </div>
     </div>
@@ -43,13 +44,24 @@
                     <a href="/" class="TopTabs-link" th:style="'color:' + @{(${section == 'shieldedAnswer'}? '#0084ff;':'')}">被屏蔽的回答</a>
                 </nav>
             </div>
-<!--            问题列表-->
+            <!--问题列表-->
             <div th:each="questionVO : ${pageInfo.getList()}">
                 <div class="CardMax">
                     <div style="margin-left: 50px">
-                        <a href="#" class="index-questionTitle"  style="font-size: 28px;font-weight: bold;"
+                        <a th:href="@{'/question/'+${questionVO.id}}" class="index-questionTitle"  style="font-size: 28px;font-weight: bold;"
                            th:text="${questionVO.title}"></a>
-                        <p style="color: #7F7F7F;" th:text="${#dates.format(questionVO.addTime,'yyyy-MM-dd HH:mm:ss')}"></p>
+                        <br>
+                        <p style="color: #7F7F7F;" >
+                            <span th:text="${questionVO.commentCount}"></span>个回复 ·
+                            <span th:text="${questionVO.viewCount}"></span>次浏览 ·
+                            <span th:text="${#dates.format(questionVO.addTime,'yyyy-MM-dd HH:mm:ss')}"></span> ·
+                            <span>
+                                <a th:href="@{'/publish/'+${questionVO.id}}"
+                                     th:if="${session.user!=null&&session.user.id==questionVO.userId}" class="community-menu">
+                                    <span class="glyphicon glyphicon-pencil" style="color: #7F7F7F;" aria-hidden="true">编辑</span>
+                                </a>
+                            </span>
+                        </p>
                     </div>
                     <div style="text-align: right;margin-right: 50px;margin-bottom: 10px;margin-top: -50px">
                         <h3 th:if="${questionVO.ended == true }" style="color: #7F7F7F">

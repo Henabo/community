@@ -15,6 +15,17 @@ public interface IQuestionService {
     void add(Question model);
 
     /**
+     * 整合添加问题和修改问题操作
+     * @param model
+     */
+    void updateOrAdd(Question model);
+
+    /**
+     * 更新问题
+     * @param model
+     */
+    void update(Question model);
+    /**
      * 查询出未删除的数据，（不考虑屏蔽）
      * @return
      */

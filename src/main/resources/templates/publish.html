@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/css/community.css">
     <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/community.js" type="application/javascript"></script>
 
 </head>
 <body>
@@ -16,14 +17,14 @@
 
 <div class="container main">
     <div class="row">
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 left-index" >
-            <img src="/images/bilibili.png"
-                 class="boxShadow" style="object-fit: cover;max-height: 100%;max-width: 100%">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+            <img src="/images/bilibili.png" class="boxShadow"
+                 style="object-fit: cover;max-height: 100%;max-width: 100%">
             <div class="boxShadow bkgColor-white" style="margin-top: 5px;border-radius: 5px">
-                <h2 style="margin-left: 20px;">
+                <h3 style="margin-left: 20px;">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     发起
-                </h2>
+                </h3>
             </div>
             <div class="boxShadow bkgColor-white" style="margin-top: 5px;border-radius: 5px">
                 <div style="margin: 20px;">
@@ -31,21 +32,58 @@
                         <input type="hidden" name="id" th:value="${id}">
                         <div class="form-group">
                             <label for="title" style="font-size:x-large">问题标题（简单扼要）</label>
-                            <input type="text" class="form-control" th:value="${title}" id="title" name="title" placeholder="写下你的问题，准确地描述问题更容易得到解答">
+                            <input type="text" class="form-control" th:value="${title}" id="title" name="title"
+                                   placeholder="写下你的问题，准确地描述问题更容易得到解答">
                         </div>
 
                         <div class="form-group">
                             <label for="content" style="font-size:x-large">问题补充（必填，请参照右侧提示）</label>
-                            <textarea name="content" id="content" th:text="${content}" class="form-control" cols="30" rows="10" placeholder="输入问题背景、条件等信息（必填）"></textarea>
+                            <textarea name="content" id="content" th:text="${content}" class="form-control" cols="30"
+                                      rows="10" placeholder="输入问题背景、条件等信息（必填）"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="tag" style="font-size:x-large">添加标签：</label>
-                            <input type="text" class="form-control" th:value="${tag}" id="tag" name="tag" placeholder="输入标签，以（，）逗号分隔">
+                            <input type="text" class="form-control" th:value="${tag}" id="tag" name="tag"
+                                   autocomplete="off"
+                                   onclick="showSelectTag()"
+                                   placeholder="输入标签，以（，）逗号分隔">
+                            <div id="select-tag" style="display: none;margin-top: 10px">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" th:each="selectCategory,selectCategoryStat : ${tags}"
+                                        th:class="${selectCategoryStat.first} ? 'active':''">
+                                        <a th:href="${'#'+selectCategory.categoryName}" aria-controls="home"
+                                           role="tab" data-toggle="tab" th:text="${selectCategory.categoryName}">
+
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" style="margin-top: 10px" th:id="${selectCategory.categoryName}"
+                                         th:each="selectCategory : ${tags}"
+                                         th:class="${selectCategoryStat.first} ? 'tab-pane active':'tab-pane'">
+                                        <span class="label label-info label-information" th:each="selectTag : ${selectCategory.tags}">
+                                            <span
+                                                  onclick="selectTag(this)" th:data-tag="${selectTag}"
+                                                  th:text="${' '+selectTag}">
+                                                Spring
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="profile">
+                                        <span class="label label-info"><span class="glyphicon glyphicon-tags"
+                                                                             onclick="selectTag('JSP')">JSP</span></span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="alert alert-danger alert-dismissible" role="alert" th:if="${error != null}" style="margin-top: 7px">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class="alert alert-danger alert-dismissible" role="alert" th:if="${error != null}"
+                             style="margin-top: 7px">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
                             <p th:text="${error}"></p>
                         </div>
                         <div style="text-align: right">
@@ -57,7 +95,7 @@
         </div>
 
 
-        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 right-index " >
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 right-index ">
             <div class="boxShadow bkgColor-white" style="border-radius: 5px;height: 200px;">
                 <div style="margin: 10px;">
                     <h1>这是右边</h1>
@@ -66,15 +104,16 @@
             <br>
             <div class="boxShadow bkgColor-white">
                 <h3>问题发起指南</h3>
-                是垃圾分类撒娇了飞洒发了是否就爱上了对方就拉说jf啊手动阀就上了飞机拉萨机法律纠纷拉萨机l
-                树栋少了几分丽莎的放假啊的肌肤拉萨解放了时间拉说j
-                十六点九分拉萨机了就爱上了拉刚好看到后返回噢回复
-                三等分拉萨机法拉九十六飞机阿拉斯加发拉萨机分类
+                • 问题标题: 请用精简的语言描述您发布的问题，不超过25字 <br>
+                • 问题补充: 详细补充您的问题内容，并确保问题描述清晰直观, 并提供一些相关的资料<br>
+                • 选择标签: 选择一个或者多个合适的标签，用逗号隔开，每个标签不超过10个字<br>
             </div>
         </div>
 
     </div>
 </div>
 
+
+<div th:replace="footer::foot"></div>
 </body>
 </html>

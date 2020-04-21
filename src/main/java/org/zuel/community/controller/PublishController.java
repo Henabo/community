@@ -1,5 +1,6 @@
 package org.zuel.community.controller;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.zuel.community.cache.TagCache;
 import org.zuel.community.model.Question;
 import org.zuel.community.model.User;
 import org.zuel.community.service.IQuestionService;
@@ -28,12 +30,17 @@ public class PublishController {
     public String edit(@PathVariable(name = "id") Integer id,
                        Model model){
         QuestionVO questionVO = questionService.selectById(id);
+        model.addAttribute("title",questionVO.getTitle());
+        model.addAttribute("content", questionVO.getContent());
+        model.addAttribute("tag", questionVO.getTag());
         model.addAttribute("questionVO", questionVO);
+        model.addAttribute("tags", TagCache.get());
         return "publish";
     }
 
     @GetMapping("/publish")
-    public String publish(){
+    public String publish(Model model){
+        model.addAttribute("tags", TagCache.get());
         return "publish";
     }
 
@@ -46,6 +53,7 @@ public class PublishController {
         model.addAttribute("title",title);
         model.addAttribute("content", content);
         model.addAttribute("tag", tag);
+        model.addAttribute("tags", TagCache.get());
         if (title == null || title == ""){
             model.addAttribute("error","标题，标题不能为空！！！");
             return "publish";
@@ -59,8 +67,13 @@ public class PublishController {
             return "publish";
         }
 
-        User user = (User) request.getSession().getAttribute("user");
+        String invalid = TagCache.filterInvalid(tag);
+        if(StringUtils.isNotBlank(invalid)){
+            model.addAttribute("error", "输入非法标签" + invalid);
+            return "publish";
+        }
 
+        User user = (User) request.getSession().getAttribute("user");
         if (user == null){
             model.addAttribute("error","用户未登录");
             return "publish";
@@ -73,7 +86,7 @@ public class PublishController {
         question.setTag(tag);
         question.setUserId(user.getId());
 //        questionService.addOrUpdate(question);
-        questionService.add(question);
+        questionService.updateOrAdd(question);
         return "redirect:/";
     }
 }

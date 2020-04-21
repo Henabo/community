@@ -34,13 +34,13 @@
                             我想提问
                         </button>
                     </li>
+                    <li><a href="/profile/question">通知 <span class="badge">42</span></a></li>
                     <li th:if="${session.user != null}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                            role="button" aria-haspopup="true" aria-expanded="false">
                             <img th:src="${session.user.avatorUrl}" style="width: 30px;height: 30px" alt="..."  class="img-rounded">
                             <span th:text="${session.user.userName}"></span>
-                            <span class="caret">
-                        </span>
+                            <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="/profile/question">我的主页</a></li>
